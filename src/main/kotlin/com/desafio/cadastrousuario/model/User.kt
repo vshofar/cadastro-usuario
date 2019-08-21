@@ -1,6 +1,20 @@
 package com.desafio.cadastrousuario.model
 
-data class User(val name: String,
+import javax.persistence.Entity
+import javax.persistence.GeneratedValue
+import javax.persistence.Id
+import javax.persistence.OneToMany
+import kotlin.collections.ArrayList
+
+@Entity
+data class User(
+                @Id
+                @GeneratedValue
+                val id: Long,
+                val name: String,
                 val email: String,
-                val password: String,
-                val phones: List<Phone>)
+                val password: String)
+{
+    @OneToMany(mappedBy = "user")
+    val phones: List<Phone> = ArrayList<Phone>()
+}
