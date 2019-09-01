@@ -8,13 +8,13 @@ import kotlin.collections.ArrayList
 
 @Entity
 data class User(
-                @Id
-                @GeneratedValue
-                val id: Long,
-                val name: String,
-                val email: String,
-                val password: String)
-{
+    @Id
+    @GeneratedValue
+    val id: Long,
+    val name: String,
+    val email: String,
+    val password: String,
+
     @OneToMany(mappedBy = "user")
-    val phones: List<Phone> = ArrayList<Phone>()
-}
+    val phones: List<Phone> = emptyList()
+)

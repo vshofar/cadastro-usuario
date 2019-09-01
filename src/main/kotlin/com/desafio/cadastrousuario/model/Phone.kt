@@ -1,5 +1,6 @@
 package com.desafio.cadastrousuario.model
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
@@ -15,6 +16,7 @@ data class Phone (
 
 ){
     @ManyToOne
+    @JsonIgnore
     lateinit var user: User
 
     constructor(number: String, ddd: String, user: User) : this(number = number, ddd = ddd){
