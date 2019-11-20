@@ -6,8 +6,8 @@ import org.springframework.stereotype.Service
 
 @Service
 class UserServiceImpl(val userRepository: UserRepository) : UserService {
-    override fun addUser(user: User) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun addUser(user: User) : User {
+        return userRepository.save(user)
     }
 
     override fun getAll(): Iterable<User> {

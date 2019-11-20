@@ -1,15 +1,12 @@
 package com.desafio.cadastrousuario.model
 
 import com.fasterxml.jackson.annotation.JsonIgnore
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.Id
-import javax.persistence.ManyToOne
+import javax.persistence.*
 
 @Entity
 data class Phone (
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0,
     val number: String,
     val ddd: String

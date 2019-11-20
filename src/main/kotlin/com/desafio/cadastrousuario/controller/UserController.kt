@@ -14,9 +14,11 @@ class UserController() {
     lateinit var userService : UserService
 
     @PostMapping("/add")
-    fun createUser(@RequestBody user: User){
+    fun createUser(@RequestBody user: User) : User{
         println("create user request")
         println(user)
+
+        return userService.addUser(user)
     }
 
     @GetMapping("/all")
