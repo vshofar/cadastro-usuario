@@ -1,20 +1,24 @@
 package com.desafio.cadastrousuario.model
 
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.Id
-import javax.persistence.OneToMany
-import kotlin.collections.ArrayList
+import org.springframework.data.annotation.CreatedDate
+import org.springframework.data.jpa.domain.support.AuditingEntityListener
+import javax.persistence.*
 
 @Entity
+@EntityListeners(AuditingEntityListener::class)
 data class User(
     @Id
     @GeneratedValue
-    val id: Long,
+    val id: Long = 0,
     val name: String,
     val email: String,
     val password: String,
 
-    @OneToMany(mappedBy = "user")
-    val phones: List<Phone> = emptyList()
+    @Column(name = "created_date", nullable = false, updatable = false)
+    @CreatedDate
+    var createdDate: Long,
+
+    @OneToMany(cascade = [CascadeType.ALL])
+    @JoinColumn(name = "user_id")
+    var phones: List<Phone> = emptyList()
 )
